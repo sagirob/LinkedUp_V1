@@ -1,0 +1,928 @@
+[
+    {
+        "id": "d05c6729.e21e08",
+        "type": "tab",
+        "label": "AWS dashboard",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "dee4a856.21afa8",
+        "type": "mqtt in",
+        "z": "d05c6729.e21e08",
+        "name": "AWS",
+        "topic": "Gmar/sensor/dht11/temp",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "fef2794e.933aa8",
+        "x": 110,
+        "y": 1100,
+        "wires": [
+            [
+                "3d4680db.9845d",
+                "e44dfff.0c4a8"
+            ]
+        ]
+    },
+    {
+        "id": "3d4680db.9845d",
+        "type": "debug",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 410,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "4e86ab99.a94684",
+        "type": "ui_gauge",
+        "z": "d05c6729.e21e08",
+        "name": "Temperature",
+        "group": "7e1ea6ad.3dad08",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#00b500",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "40",
+        "x": 650,
+        "y": 1200,
+        "wires": [],
+        "inputLabels": [
+            "temperature"
+        ]
+    },
+    {
+        "id": "5ec19b11.222224",
+        "type": "change",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.temperature",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 1200,
+        "wires": [
+            [
+                "4e86ab99.a94684",
+                "a933b0cd.d0715"
+            ]
+        ]
+    },
+    {
+        "id": "e44dfff.0c4a8",
+        "type": "json",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 230,
+        "y": 1180,
+        "wires": [
+            [
+                "5ec19b11.222224"
+            ]
+        ]
+    },
+    {
+        "id": "15adc389.67f80c",
+        "type": "mqtt in",
+        "z": "d05c6729.e21e08",
+        "name": "AWS",
+        "topic": "Gmar/sensor/dht11/hum",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "fef2794e.933aa8",
+        "x": 110,
+        "y": 1380,
+        "wires": [
+            [
+                "c1c38977.30e558",
+                "b82b1fb4.b1226"
+            ]
+        ]
+    },
+    {
+        "id": "c1c38977.30e558",
+        "type": "debug",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 450,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "4d922934.aa8168",
+        "type": "ui_gauge",
+        "z": "d05c6729.e21e08",
+        "name": "Humidity",
+        "group": "7e1ea6ad.3dad08",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "gauge",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#00b500",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 660,
+        "y": 1480,
+        "wires": [],
+        "inputLabels": [
+            "humidity"
+        ]
+    },
+    {
+        "id": "2f8da148.8900ce",
+        "type": "change",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.humidity",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 1480,
+        "wires": [
+            [
+                "4d922934.aa8168",
+                "7c5d4b6.13342b4"
+            ]
+        ]
+    },
+    {
+        "id": "b82b1fb4.b1226",
+        "type": "json",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 270,
+        "y": 1460,
+        "wires": [
+            [
+                "2f8da148.8900ce"
+            ]
+        ]
+    },
+    {
+        "id": "b76cf8b6.9f4da8",
+        "type": "mqtt in",
+        "z": "d05c6729.e21e08",
+        "name": "AWS",
+        "topic": "Gmar/sensor/pir/state",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "fef2794e.933aa8",
+        "x": 110,
+        "y": 1640,
+        "wires": [
+            [
+                "7b1134a4.75d48c",
+                "ad5cf9ef.0348f8"
+            ]
+        ]
+    },
+    {
+        "id": "7b1134a4.75d48c",
+        "type": "debug",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 450,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "ab792842.8075f8",
+        "type": "change",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.pir",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 1740,
+        "wires": [
+            [
+                "26a4a89d.4d7848",
+                "9133685a.4bf6f8"
+            ]
+        ]
+    },
+    {
+        "id": "ad5cf9ef.0348f8",
+        "type": "json",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 210,
+        "y": 1740,
+        "wires": [
+            [
+                "ab792842.8075f8"
+            ]
+        ]
+    },
+    {
+        "id": "169c8b0c.7163a5",
+        "type": "ui_button",
+        "z": "d05c6729.e21e08",
+        "name": "motion indicator",
+        "group": "745f15d6.c27fcc",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "{{msg.state}}",
+        "tooltip": "",
+        "color": "{{msg.colour}}",
+        "bgcolor": "{{msg.backgroud}}",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 700,
+        "y": 1740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "26a4a89d.4d7848",
+        "type": "function",
+        "z": "d05c6729.e21e08",
+        "name": "indicator",
+        "func": "if (msg.payload === \"1\")\n{\n    msg.colour = \"white\";\n    msg.backgroud =\"red\";\n    msg.state =\"motion\";\n    return msg;\n    \n}\nelse\n{\n    msg.colour =\"white\";\n    msg.backgroud =\"green\";\n    msg.state =\"no motion\";\nreturn msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 520,
+        "y": 1740,
+        "wires": [
+            [
+                "169c8b0c.7163a5",
+                "88cac0ab.a3a08"
+            ]
+        ]
+    },
+    {
+        "id": "9133685a.4bf6f8",
+        "type": "debug",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 520,
+        "y": 1860,
+        "wires": []
+    },
+    {
+        "id": "88cac0ab.a3a08",
+        "type": "debug",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "colour",
+        "targetType": "msg",
+        "x": 680,
+        "y": 1820,
+        "wires": []
+    },
+    {
+        "id": "7aceef09.d9a95",
+        "type": "inject",
+        "z": "d05c6729.e21e08",
+        "name": "no motion",
+        "topic": "",
+        "payload": "{\"pir\" : \"0\"}",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 1880,
+        "wires": [
+            [
+                "ab792842.8075f8"
+            ]
+        ]
+    },
+    {
+        "id": "85ba636d.c947c",
+        "type": "inject",
+        "z": "d05c6729.e21e08",
+        "name": "motion",
+        "topic": "",
+        "payload": "{\"pir\" : \"1\"}",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 1920,
+        "wires": [
+            [
+                "ab792842.8075f8"
+            ]
+        ]
+    },
+    {
+        "id": "8d3d8bb8.5ad4f8",
+        "type": "mqtt in",
+        "z": "d05c6729.e21e08",
+        "name": "AWS",
+        "topic": "Gmar/sensor/reed/state",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "fef2794e.933aa8",
+        "x": 90,
+        "y": 2040,
+        "wires": [
+            [
+                "2c704fe9.b85c6",
+                "4ffba521.061bcc"
+            ]
+        ]
+    },
+    {
+        "id": "2c704fe9.b85c6",
+        "type": "debug",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 430,
+        "y": 2040,
+        "wires": []
+    },
+    {
+        "id": "f3a08ea5.e6941",
+        "type": "change",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.reed",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 2180,
+        "wires": [
+            [
+                "12d5cbc2.e7fde4",
+                "a4fc2818.509878"
+            ]
+        ]
+    },
+    {
+        "id": "4ffba521.061bcc",
+        "type": "json",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 190,
+        "y": 2140,
+        "wires": [
+            [
+                "f3a08ea5.e6941"
+            ]
+        ]
+    },
+    {
+        "id": "bdd37e03.5243f",
+        "type": "ui_button",
+        "z": "d05c6729.e21e08",
+        "name": "Reed Status indicator",
+        "group": "745f15d6.c27fcc",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "{{msg.state}}",
+        "tooltip": "",
+        "color": "{{msg.colour}}",
+        "bgcolor": "{{msg.backgroud}}",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 700,
+        "y": 2140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "12d5cbc2.e7fde4",
+        "type": "function",
+        "z": "d05c6729.e21e08",
+        "name": "indicator",
+        "func": "if (msg.payload === \"0\")\n{\n    msg.colour = \"white\";\n    msg.backgroud =\"red\";\n    msg.state =\"OPEN\";\n    return msg;\n    \n}\nelse\n{\n    msg.colour =\"white\";\n    msg.backgroud =\"green\";\n    msg.state =\"CLOSE\";\nreturn msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 500,
+        "y": 2140,
+        "wires": [
+            [
+                "bdd37e03.5243f",
+                "fa86e499.6431f8"
+            ]
+        ]
+    },
+    {
+        "id": "a4fc2818.509878",
+        "type": "debug",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 500,
+        "y": 2260,
+        "wires": []
+    },
+    {
+        "id": "fa86e499.6431f8",
+        "type": "debug",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "colour",
+        "targetType": "msg",
+        "x": 660,
+        "y": 2220,
+        "wires": []
+    },
+    {
+        "id": "6e0c0a61.7fc7c4",
+        "type": "inject",
+        "z": "d05c6729.e21e08",
+        "name": "reed open",
+        "topic": "",
+        "payload": "{\"reed\" : \"0\"}",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 100,
+        "y": 2280,
+        "wires": [
+            [
+                "f3a08ea5.e6941"
+            ]
+        ]
+    },
+    {
+        "id": "42e039ad.9259d8",
+        "type": "inject",
+        "z": "d05c6729.e21e08",
+        "name": "reed close",
+        "topic": "",
+        "payload": "{\"reed\" : \"1\"}",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 100,
+        "y": 2320,
+        "wires": [
+            [
+                "f3a08ea5.e6941"
+            ]
+        ]
+    },
+    {
+        "id": "4b4828ed.f26088",
+        "type": "comment",
+        "z": "d05c6729.e21e08",
+        "name": "Temperature Read",
+        "info": "",
+        "x": 350,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "fad9492b.f8bd28",
+        "type": "comment",
+        "z": "d05c6729.e21e08",
+        "name": "Humidity Read",
+        "info": "",
+        "x": 380,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "c11ef486.488708",
+        "type": "comment",
+        "z": "d05c6729.e21e08",
+        "name": "PIR sensor read",
+        "info": "",
+        "x": 340,
+        "y": 1600,
+        "wires": []
+    },
+    {
+        "id": "66318d78.ddfb04",
+        "type": "comment",
+        "z": "d05c6729.e21e08",
+        "name": "Reed Switch status",
+        "info": "",
+        "x": 330,
+        "y": 2000,
+        "wires": []
+    },
+    {
+        "id": "3e164c80.b01154",
+        "type": "mqtt out",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "topic": "",
+        "qos": "0",
+        "retain": "",
+        "broker": "fef2794e.933aa8",
+        "x": 470,
+        "y": 2500,
+        "wires": []
+    },
+    {
+        "id": "77838988.9e2608",
+        "type": "ui_colour_picker",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "label": "",
+        "group": "5fcade5f.14468",
+        "format": "hex",
+        "outformat": "string",
+        "showSwatch": true,
+        "showPicker": true,
+        "showValue": false,
+        "showHue": false,
+        "showAlpha": false,
+        "showLightness": true,
+        "square": "false",
+        "dynOutput": "false",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "topic": "Gmar/sensor/led/color",
+        "x": 110,
+        "y": 2500,
+        "wires": [
+            [
+                "3e164c80.b01154"
+            ]
+        ]
+    },
+    {
+        "id": "db28fd18.8760c",
+        "type": "ui_switch",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "label": "Led switch",
+        "tooltip": "",
+        "group": "5fcade5f.14468",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": "false",
+        "topic": "Gmar/sensor/led/status",
+        "style": "",
+        "onvalue": "ON",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "OFF",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "x": 130,
+        "y": 2560,
+        "wires": [
+            [
+                "3e164c80.b01154"
+            ]
+        ]
+    },
+    {
+        "id": "e91c9188.ad132",
+        "type": "comment",
+        "z": "d05c6729.e21e08",
+        "name": "actuators control",
+        "info": "",
+        "x": 300,
+        "y": 2460,
+        "wires": []
+    },
+    {
+        "id": "2c1cf43a.065cbc",
+        "type": "ui_switch",
+        "z": "d05c6729.e21e08",
+        "name": "",
+        "label": "Relay switch",
+        "tooltip": "",
+        "group": "62fa9507.6da08c",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "Gmar/sensor/relay/status",
+        "style": "",
+        "onvalue": "ON",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "OFF",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "x": 130,
+        "y": 2620,
+        "wires": [
+            [
+                "3e164c80.b01154"
+            ]
+        ]
+    },
+    {
+        "id": "a933b0cd.d0715",
+        "type": "ui_chart",
+        "z": "d05c6729.e21e08",
+        "name": "Temperature Chart",
+        "group": "7e1ea6ad.3dad08",
+        "order": 2,
+        "width": "6",
+        "height": "6",
+        "label": "Temperature Chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 670,
+        "y": 1240,
+        "wires": [
+            []
+        ],
+        "inputLabels": [
+            "Temperature"
+        ]
+    },
+    {
+        "id": "7c5d4b6.13342b4",
+        "type": "ui_chart",
+        "z": "d05c6729.e21e08",
+        "name": "Humidity chart",
+        "group": "7e1ea6ad.3dad08",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "Humidity chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 690,
+        "y": 1540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fef2794e.933aa8",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "",
+        "broker": "a2c0nsu0jlzouj-ats.iot.eu-central-1.amazonaws.com",
+        "port": "8883",
+        "tls": "e534c630.3b6aa8",
+        "clientid": "",
+        "usetls": true,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "7e1ea6ad.3dad08",
+        "type": "ui_group",
+        "z": "",
+        "name": "DHT11 sensor",
+        "tab": "6f96e3c.078ae1c",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "745f15d6.c27fcc",
+        "type": "ui_group",
+        "z": "",
+        "name": "PIR and REED indicators",
+        "tab": "6f96e3c.078ae1c",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "5fcade5f.14468",
+        "type": "ui_group",
+        "z": "",
+        "name": "Led control",
+        "tab": "6f96e3c.078ae1c",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "62fa9507.6da08c",
+        "type": "ui_group",
+        "z": "",
+        "name": "Relay cotrol",
+        "tab": "6f96e3c.078ae1c",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "e534c630.3b6aa8",
+        "type": "tls-config",
+        "z": "",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "cloud.pem.crt",
+        "keyname": "cloud.pem.key",
+        "caname": "root-ca.pem",
+        "servername": "",
+        "verifyservercert": false
+    },
+    {
+        "id": "6f96e3c.078ae1c",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Block 4",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    }
+]
